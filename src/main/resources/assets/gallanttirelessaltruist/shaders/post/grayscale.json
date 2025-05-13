@@ -1,0 +1,21 @@
+{
+  "targets": ["swap", "previous"],
+  "passes": [
+    {
+      "name": "gallanttirelessaltruist:grayscale",
+      "intarget": "minecraft:main",
+      "outtarget": "swap",
+      "uniforms": [
+        {
+          "name": "InverseAmount",
+          "values": [ 0.0 ]
+        }
+      ]
+    },
+    {
+      "name": "blit",
+      "intarget": "swap",
+      "outtarget": "minecraft:main"
+    }
+  ]
+}
