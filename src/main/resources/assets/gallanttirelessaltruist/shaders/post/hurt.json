@@ -2,7 +2,7 @@
   "targets": ["swap"],
   "passes": [
     {
-      "name": "gallanttirelessaltruist:grayscale",
+      "name": "gallanttirelessaltruist:hurt",
       "intarget": "minecraft:main",
       "outtarget": "swap",
       "uniforms": [

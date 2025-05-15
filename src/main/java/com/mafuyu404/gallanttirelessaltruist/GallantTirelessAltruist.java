@@ -1,5 +1,6 @@
 package com.mafuyu404.gallanttirelessaltruist;
 
+import com.mafuyu404.gallanttirelessaltruist.network.NetworkHandler;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.Registries;
@@ -38,6 +39,10 @@ public class GallantTirelessAltruist {
 
     public GallantTirelessAltruist() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-
+        NetworkHandler.register();
+        ModLoadingContext.get().registerConfig(
+                ModConfig.Type.CLIENT,
+                Config.SPEC
+        );
     }
 }
