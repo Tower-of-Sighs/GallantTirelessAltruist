@@ -2,9 +2,9 @@ package com.mafuyu404.gallanttirelessaltruist.event;
 
 import com.mafuyu404.gallanttirelessaltruist.Config;
 import com.mafuyu404.gallanttirelessaltruist.GallantTirelessAltruist;
-import com.mafuyu404.gallanttirelessaltruist.init.EffectManager;
+import com.mafuyu404.gallanttirelessaltruist.init.ShaderManager;
 import net.minecraft.client.Minecraft;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.client.renderer.EffectInstance;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.TickEvent;
@@ -17,14 +17,13 @@ public class HurtEffect {
     private static final int transitionS = 2;
     private static final int transitionE = 4;
     private static int ticksRemaining = 0;
-    private static final ResourceLocation hurt = new ResourceLocation(GallantTirelessAltruist.MODID, "shaders/post/hurt.json");
 
     public static void HurtEffect() {
         if (!Config.ENABLE_HURTEFFECT.get()) return;
         Minecraft mc = Minecraft.getInstance();
         Player player = mc.player;
         if (player == null) return;
-        mc.gameRenderer.loadEffect(hurt);
+        ShaderManager.loadShader("hurt", "shaders/post/hurt.json");
         if (ticksRemaining == 0) {
             ticksRemaining = player.tickCount;
         } else {
@@ -53,11 +52,16 @@ public class HurtEffect {
                 intensityAmount = 1.0F;
             }
 
-            EffectManager.setUniform("hurt", "IntensityAmount", intensityAmount);
+            ShaderManager.getShader("hurt").forEach(postPass -> {
+                EffectInstance effect = postPass.getEffect();
+                if (effect.getName().equals("gallanttirelessaltruist:hurt")) {
+                    effect.safeGetUniform("IntensityAmount").set(intensityAmount);
+                }
+            });
 
             if (progress == total) {
                 ticksRemaining = 0;
-                mc.gameRenderer.shutdownEffect();
+                ShaderManager.clean("hurt");
             }
         }
     }
