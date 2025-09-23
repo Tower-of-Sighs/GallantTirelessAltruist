@@ -33,11 +33,14 @@ public class HurtEffect {
 
     @SubscribeEvent
     public static void onClientTick(TickEvent.ClientTickEvent event) {
+        System.out.print(ticksRemaining+"\n");
         if (event.phase != TickEvent.Phase.START) return;
 
         Minecraft mc = Minecraft.getInstance();
         Player player = mc.player;
         if (player == null) return;
+
+        if (player.tickCount < 20) ticksRemaining = 0;
 
         if (ticksRemaining > 0) {
             int progress = player.tickCount - ticksRemaining;
