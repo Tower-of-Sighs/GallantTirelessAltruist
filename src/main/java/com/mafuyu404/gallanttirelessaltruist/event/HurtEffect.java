@@ -33,7 +33,6 @@ public class HurtEffect {
 
     @SubscribeEvent
     public static void onClientTick(TickEvent.ClientTickEvent event) {
-        System.out.print(ticksRemaining+"\n");
         if (event.phase != TickEvent.Phase.START) return;
 
         Minecraft mc = Minecraft.getInstance();
@@ -55,10 +54,13 @@ public class HurtEffect {
                 intensityAmount = 1.0F;
             }
 
+            intensityAmount *= Config.HURTEFFECT_INTENSITY.get();
+
+            float finalIntensityAmount = intensityAmount;
             ShaderManager.getShader("hurt").forEach(postPass -> {
                 EffectInstance effect = postPass.getEffect();
                 if (effect.getName().equals("gallanttirelessaltruist:hurt")) {
-                    effect.safeGetUniform("IntensityAmount").set(intensityAmount);
+                    effect.safeGetUniform("IntensityAmount").set(finalIntensityAmount);
                 }
             });
 

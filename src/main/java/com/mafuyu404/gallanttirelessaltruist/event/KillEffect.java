@@ -52,10 +52,13 @@ public class KillEffect {
                 intensityAmount = 1.0F;
             }
 
+            intensityAmount *= Config.KILLEFFECT_INTENSITY.get();
+
+            float finalIntensityAmount = intensityAmount;
             ShaderManager.getShader("grayscale").forEach(postPass -> {
                 EffectInstance effect = postPass.getEffect();
                 if (effect.getName().equals("gallanttirelessaltruist:grayscale")) {
-                    effect.safeGetUniform("IntensityAmount").set(intensityAmount);
+                    effect.safeGetUniform("IntensityAmount").set(finalIntensityAmount);
                 }
             });
 
