@@ -23,7 +23,7 @@ public class KillEffect {
         Minecraft mc = Minecraft.getInstance();
         Player player = mc.player;
         if (player == null) return;
-        ShaderManager.loadShader("grayscale", "shaders/post/grayscale.json");
+        ShaderManager.loadEffect("grayscale", "shaders/post/grayscale.json");
         if (ticksRemaining == 0) {
             ticksRemaining = player.tickCount;
         } else {
@@ -55,7 +55,7 @@ public class KillEffect {
             intensityAmount *= Config.KILLEFFECT_INTENSITY.get();
 
             float finalIntensityAmount = intensityAmount;
-            ShaderManager.getShader("grayscale").forEach(postPass -> {
+            ShaderManager.getEffect("grayscale").forEach(postPass -> {
                 EffectInstance effect = postPass.getEffect();
                 if (effect.getName().equals("gallanttirelessaltruist:grayscale")) {
                     effect.safeGetUniform("IntensityAmount").set(finalIntensityAmount);

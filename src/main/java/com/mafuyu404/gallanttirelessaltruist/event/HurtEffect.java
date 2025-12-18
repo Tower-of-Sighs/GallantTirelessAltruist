@@ -23,7 +23,7 @@ public class HurtEffect {
         Minecraft mc = Minecraft.getInstance();
         Player player = mc.player;
         if (player == null) return;
-        ShaderManager.loadShader("hurt", "shaders/post/hurt.json");
+        ShaderManager.loadEffect("hurt", "shaders/post/hurt.json");
         if (ticksRemaining == 0) {
             ticksRemaining = player.tickCount;
         } else {
@@ -57,7 +57,7 @@ public class HurtEffect {
             intensityAmount *= Config.HURTEFFECT_INTENSITY.get();
 
             float finalIntensityAmount = intensityAmount;
-            ShaderManager.getShader("hurt").forEach(postPass -> {
+            ShaderManager.getEffect("hurt").forEach(postPass -> {
                 EffectInstance effect = postPass.getEffect();
                 if (effect.getName().equals("gallanttirelessaltruist:hurt")) {
                     effect.safeGetUniform("IntensityAmount").set(finalIntensityAmount);
