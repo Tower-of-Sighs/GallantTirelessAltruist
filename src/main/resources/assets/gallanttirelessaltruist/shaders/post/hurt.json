@@ -1,0 +1,21 @@
+{
+  "targets": ["swap"],
+  "passes": [
+    {
+      "name": "gallanttirelessaltruist:hurt",
+      "intarget": "minecraft:main",
+      "outtarget": "swap",
+      "uniforms": [
+        {
+          "name": "IntensityAmount",
+          "values": [ 0.0 ]
+        }
+      ]
+    },
+    {
+      "name": "blit",
+      "intarget": "swap",
+      "outtarget": "minecraft:main"
+    }
+  ]
+}

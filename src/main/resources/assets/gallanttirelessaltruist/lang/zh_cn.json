@@ -1,0 +1,10 @@
+{
+  "gallanttirelessaltruist.configuration.globalSetting": "全局设置",
+  "gallanttirelessaltruist.configuration.enableKillEffect": "启用击杀特效。",
+  "gallanttirelessaltruist.configuration.enableHurtEffect": "启用受伤特效。",
+  "gallanttirelessaltruist.configuration.disableHurtEffect": "禁用原版受伤抖动。",
+
+  "gallanttirelessaltruist.configuration.effectSetting": "特效设置",
+  "gallanttirelessaltruist.configuration.killEffectIntensity": "击杀特效强度。",
+  "gallanttirelessaltruist.configuration.effectIntensity": "受伤特效强度。"
+}

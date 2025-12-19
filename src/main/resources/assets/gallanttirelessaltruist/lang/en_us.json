@@ -1,0 +1,10 @@
+{
+  "gallanttirelessaltruist.configuration.globalSetting":"Global Setting",
+  "gallanttirelessaltruist.configuration.enableKillEffect":"Just enable KillEffect.",
+  "gallanttirelessaltruist.configuration.enableHurtEffect":"Just enable HurtEffect.",
+  "gallanttirelessaltruist.configuration.disableHurtEffect":"Just disable vanilla HurtShake.",
+
+  "gallanttirelessaltruist.configuration.effectSetting":"Effect Setting",
+  "gallanttirelessaltruist.configuration.killEffectIntensity":"Intensity of KillEffect.",
+  "gallanttirelessaltruist.configuration.effectIntensity":"Intensity of HurtEffect."
+}
